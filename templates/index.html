@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ ACCORDION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #4285f4;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 120px;
+            margin-bottom: 20px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .questions-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .question button {
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .question button:hover {
+            background-color: #f8f9fa;
+        }
+
+        .question p {
+            font-size: 1rem;
+            max-height: 0;
+            opacity: 0;
+            line-height: 1.6;
+            overflow: hidden;
+            transition: all 0.6s ease;
+            background-color: #ffffff;
+            color: #666;
+            padding: 0 20px;
+        }
+
+        .d-arrow {
+            transition: transform 0.5s ease-in;
+            color: #4285f4;
+        }
+
+        .question p.show {
+            max-height: 300px;
+            opacity: 1;
+            padding: 20px;
+        }
+
+        .question button .d-arrow.rotate {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+                margin-top: 100px;
+            }
+
+            .questions-container {
+                padding: 15px;
+            }
+
+            .question button {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='okay.jpg') }}" alt="Logo">
+        <div class="nav-links">
+            <a href="home">Home</a>
+            <a href="chatbox">RIC FAQ Chatbot</a>
+        </div>
+    </nav>
+
+    <section>
+        <h1 class="title">WELCOME TO RANGSIT UNIVERSITY FAQ SYSTEM</h1>
+        <h2 class="title">Frequently Asked Questions</h2>
+        <div class="questions-container">
+            <div class="question">
+                <button>
+                    <span>How do we enroll in the course?</span>
+                    <i class="fas fa-chevron-down d-arrow"></i>
+                </button>
+                <p>What are the admissions requirements? The academic entry requirement is a high school diploma or equivalent and IELTS 5 or equivalent.</p>
+            </div>
+
+            <div class="question">
+                <button>
+                    <span>How long does the admissions process take?</span>
+                    <i class="fas fa-chevron-down d-arrow"></i>
+                </button>
+                <p>Once we have the completed application file, including all required materials, it usually takes a few days to a week for application processing, review, and for your Letter of Acceptance to be sent by email. You will then be required to pay a non-refundable partial payment 30% of tuition fees of the semester before your visa supporting document is granted. The remaining 70% of the fees are paid once you arrived at the university. Please note, the partial payment may be changed based on your country of origin.</p>
+            </div>
+
+            <div class="question">
+                <button>
+                    <span>Who is the dean of RIC?</span>
+                    <i class="fas fa-chevron-down d-arrow"></i>
+                </button>
+                <p>It is AJ Todsanai.</p>
+            </div>
+
+            <div class="question">
+                <button>
+                    <span>How much does it cost to attend the program?</span>
+                    <i class="fas fa-chevron-down d-arrow"></i>
+                </button>
+                <p>A current estimated cost of tuition fees can be found at the Tuition section of the website.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const buttons = document.querySelectorAll('button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const faq = button.nextElementSibling;
+                const icon = button.children[1];
+
+                faq.classList.toggle('show');
+                icon.classList.toggle('rotate');
+            })
+        });
+    </script>
+</body>
+</html>
