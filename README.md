@@ -26,4 +26,3 @@ A Flask-based chatbot application designed to answer frequently asked questions 
 - Backend: Python Flask
 - Frontend: HTML5, CSS3, JavaScript
 - UI: Modern responsive design with custom animations
-- Deployment: Ready for web deployment
