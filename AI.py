@@ -1,8 +1,13 @@
 import google.generativeai as genai
 import json
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Configure Gemini API
-genai.configure(api_key="AIzaSyBkrmAYmr8weapPGljM2QDNCd-UZ6460Us")
+genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
 def get_gemini_response(query):
     try:
